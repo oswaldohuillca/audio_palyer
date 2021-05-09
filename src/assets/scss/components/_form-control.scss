@@ -1,0 +1,15 @@
+@layer components{
+    .form-group{
+        @apply relative w-auto;
+        .form-control{
+            @apply px-5 border rounded-full py-2 shadow-sm outline-none w-full;
+            &:focus{
+                @apply ring outline-none;            
+            }
+        }
+        .icon{
+            @apply absolute right-2 top-2 text-gray-600;
+        }
+    }
+    
+}

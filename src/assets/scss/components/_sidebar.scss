@@ -1,0 +1,21 @@
+@layer components{
+    .sidebar{
+        @apply text-white py-5;
+        .logo{
+            @apply flex px-8 ;
+        }
+        .menu{
+            h2{
+                @apply flex px-8 py-1 font-bold text-lg;
+            }
+            li{
+                a{
+                    @apply flex px-8 py-1;
+                    &.active{
+                        @apply  border-l-8 border-theme-1 px-6;
+                    }
+                }
+            }
+        }
+    }
+}

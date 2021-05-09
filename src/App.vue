@@ -1,26 +1,37 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <main class="grid grid-cols-12 grid-rows-none xl:grid-rows-12 h-screen">
+        <Sidebar/>
+        <Content/>
+        <Controlbar/>
+    </main>
+    
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Sidebar from "./components/Sidebar";
+import Content from "./components/Content";
+import Controlbar from "./components/Controlbar";
+import { useStore } from "vuex";
+import {  onBeforeMount, onMounted, ref } from 'vue';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    name: 'App',
+    components: {
+        Sidebar,
+        Content,
+        Controlbar
+    },
+    setup(){
+        const store = useStore();     
+        onBeforeMount(()=>{
+            store.dispatch("getAlbum");
+            store.dispatch("getSongs");
+        });    
+        return {
+            //album: computed(()=>store.getters.album)
+        }
+    }
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+
